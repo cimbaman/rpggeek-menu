@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "RPGGeek Roleplaying Menu",
+  "version": "1.0",
+  "description": "Extension of the normal RPGGeek functionaly so it includes button of OOC speak, and color speak for your charcaters.",
+  "options_page": "options.html",
+  "permissions": [
+    "activeTab", "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://rpggeek.com/*",
+        "http://rpggeek.com/*"
+      ],
+      "js": ["bookmark.js"]
+    }
+  ]
+}
