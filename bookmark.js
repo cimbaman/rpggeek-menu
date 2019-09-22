@@ -1,12 +1,32 @@
 javascript:(function(){ 
+  console.log("start..");
+
+  menuAdd(document);
+
+  var observer = new MutationObserver(function(mutations, observer){
+
+    for(var i=0; i<mutations.length; ++i) {
+      for(var j=0; j<mutations[i].addedNodes.length; ++j) {
+          if(mutations[i].addedNodes[j].id == "articleform") {
+            menuAdd(mutations[i].addedNodes[j]);
+          }
+      }
+  }
+  });
+  observer.observe(document.getElementById("maincontent"), {subtree: true, childList: true});
+
+  function menuAdd(top){
 
   chrome.storage.sync.get('characters', function(data) {
     var characters = data.characters;
+    console.log("chars..");
 
     if(document.getElementById('charMenu')) document.getElementById('charMenu').remove();
-  
-    var replyBox = document.getElementsByClassName('forum_table');
-    if(replyBox.length != 0 && replyBox[0].getElementsByTagName("textarea").length !=0){
+    var articleBox = (top.id == "articleform")? top : top.getElementById("articleform");
+    if(articleBox) var replyBox = articleBox.getElementsByClassName('forum_table');
+    if(articleBox && replyBox.length != 0 && replyBox[0].getElementsByTagName("textarea").length !=0){
+
+  console.log("menujf..");
       var newTableRow = replyBox[0].getElementsByTagName('tbody')[0].insertRow(0); newTableRow.id = "charMenu"; 
 var newTableCell = newTableRow.insertCell(); var newTable = document.createElement("TABLE"); 
     newTableCell.appendChild(newTable); var newRow = newTable.insertRow(); 
@@ -39,4 +59,6 @@ function chardropChange() {
 }
 }
 });
+
+}
 })()
