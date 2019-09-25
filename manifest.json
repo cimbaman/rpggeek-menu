@@ -2,7 +2,8 @@
   "manifest_version": 2,
   "name": "RPGGeek Roleplaying Menu",
   "version": "1.0",
-  "description": "Extension of the normal RPGGeek functionaly so it includes button of OOC speak, and color speak for your charcaters.",
+  "description": "Extension of the normal RPGGeek functionaly so it includes buttons and menus to make roleplaying a bit easier.",
+  "homepage_url": "https://github.com/cimbaman/rpggeek-menu",
   "options_page": "options.html",
   "permissions": [
     "activeTab", "storage"
@@ -19,5 +20,8 @@
       ],
       "js": ["bookmark.js"]
     }
-  ]
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
 }
