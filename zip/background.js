@@ -1,19 +1,7 @@
 chrome.runtime.onInstalled.addListener(function() {
 
-      chrome.storage.sync.get('rpgg_menu_btns', function(data){
-        var btns = data.rpgg_menu_btns;
 
-        if (!(btns && btns.length != 0)){
 
-            chrome.storage.sync.set({
-                rpgg_menu_btns: [{name:"Post in progress", function:"[COLOR=#FF0000]Post in progress[/COLOR]"}]
-            }, 
-            function() {
-              console.log("Inital buttons set.");
-            });
-
-        }
-      });
 
       chrome.storage.sync.get('rpgg_menu_characters', function(data) {
 
