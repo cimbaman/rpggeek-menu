@@ -68,22 +68,8 @@ var newTableCell = newTableRow.insertCell(); var newTable = document.createEleme
     if(box.name=="MESSAGEFORM") {var nameCell = newRow.insertCell(); nameCell.align="right"; var logoImg = document.createElement("IMG"); logoImg.setAttribute("src", chrome.runtime.getURL("img/icon32.png")); nameCell.appendChild(logoImg);}
     var oocCell  = newRow.insertCell(); oocCell.innerHTML = "<input class=\"smallerfont\" type=\"button\" value=\"OOC\" onmouseout=\"return nd();\" onclick=\"javascript:wrapSelection( document."+box.name+"." + extBox + ",'[ooc]','[/ooc]');\">";
     var rollCell = newRow.insertCell(); rollCell.innerHTML = "<input class=\"smallerfont\" type=\"button\" value=\"Quick roll\" onclick=\"quickRoll(document."+box.name+");\">";
-    //var wipCell = newRow.insertCell(); wipCell.innerHTML = "<input class=\"smallerfont\" type=\"button\" value=\"Post in progress\" onclick=\"javascript:emoticon(document."+box.name+"." + extBox + ",\'[COLOR=#FF0000]Post in progress[/COLOR]\');\">";
+    var wipCell = newRow.insertCell(); wipCell.innerHTML = "<input class=\"smallerfont\" type=\"button\" value=\"Post in progress\" onclick=\"javascript:emoticon(document."+box.name+"." + extBox + ",\'[COLOR=#FF0000]Post in progress[/COLOR]\');\">";
 
-
-    chrome.storage.sync.get('rpgg_menu_btns', function(data) {
-
-      
-    
-      var btns = data.rpgg_menu_btns;
-
-      console.log(btns);
-        for (var b = 0; b < btns.length; b++){
-          var btnCell = newRow.insertCell();
-          btnCell.innerHTML = "<input class=\"smallerfont\" type=\"button\" value=\""+ btns[b]["name"] +"\" onclick=\"javascript:emoticon(document."+box.name+"." + extBox + ",\'"+ btns[b]["function"] +"\');\">";
-
-        }
-    });
 
     //rollCell.onclick = function(){quickRoll();}
 
